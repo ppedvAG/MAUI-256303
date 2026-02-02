@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M004.MainPage">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="30,0" Spacing="25">
+			<!--Label: Textausgabe-->
+			<!--FontSize ohne konkrete Zahl passt sich auf Größeneinstellungen im System an-->
+			<Label Text="Hallo Welt" FontSize="Large"/>
+
+			<!--Image: Bild-->
+			<!--Sollten in Resources/Images liegen-->
+			<Image Source="ppedv.bmp"/>
+
+			<!--Button: Useraktion-->
+			<Button Text="Hallo" Clicked="Button_Clicked" x:Name="CounterBtn"/>
+
+			<!--Entry: Texteingabe-->
+			<Entry Placeholder="Gib einen Text ein" Keyboard="Default"/>
+
+			<Editor Placeholder="Gib einen langen Text ein" Keyboard="Numeric"/>
+			
+			<!--SearchBar: Entry + Button-->
+			<!--Clicked-Event: SearchButtonPressed-->
+			<SearchBar Placeholder="Suche nach einem Begriff" SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+
+			<!--CheckBox + Switch: Ja/Nein Auswahl-->
+			<CheckBox IsChecked="True"/>
+			<Switch IsToggled="True"/>
+			
+			<!--Slider, Stepper: Bereiche angeben-->
+			<Label x:Name="Output"/>
+			<Slider Minimum="0" Maximum="100" Value="20" ValueChanged="Slider_ValueChanged" Scale="2"/>
+			<Stepper Minimum="0" Maximum="100" Value="20" Increment="1" ValueChanged="Slider_ValueChanged"/>
+			
+			<!--ProgressBar, ActivityIndicator: Fortschritte anzeigen-->
+			<ProgressBar Progress="0.3"/>
+			<ActivityIndicator IsVisible="True" IsRunning="True"/>
+			
+			<!--DatePicker, TimePicker: Datums-/Zeitauswahl-->
+			<DatePicker MinimumDate="2000-01-01"/>
+			<TimePicker Time="00:00:00" Format="HH:MM:SS"/>
+			
+			<!--Picker: Auswahl aus einer Liste-->
+			<Picker Title="Zahlenauswahl">
+				<Picker.Items>
+					<x:String>Eins</x:String>
+					<x:String>Zwei</x:String>
+					<x:String>Drei</x:String>
+				</Picker.Items>
+			</Picker>
+
+			<!--Zahlen aus dem Backend (siehe Konstruktor)-->
+			<Picker x:Name="Zahlen"/>
+
+			<Rectangle WidthRequest="100" HeightRequest="100" Fill="Aqua"/>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
