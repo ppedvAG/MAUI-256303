@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:sys="clr-namespace:System;assembly=netstandard"
+			 xmlns:local="clr-namespace:M006"
+             x:Class="M006.MainPage"
+			 BindingContext="{Binding Source={RelativeSource Self}}">
+	<ContentPage.Resources>
+		<x:Int32 x:Key="DefaultFontSize">20</x:Int32>
+	</ContentPage.Resources>
+	<ScrollView>
+		<VerticalStackLayout Padding="30,0" Spacing="25">
+			<Label
+                Text="Hello, World!"
+                Style="{StaticResource Headline}"
+				FontSize="{DynamicResource DefaultFontSize}"/>
+
+			<Slider Minimum="10" Maximum="100" Value="{Binding Path=Resources[DefaultFontSize]}"/>
+
+			<Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill"
+				FontSize="{DynamicResource DefaultFontSize}"/>
+
+			<!--x:Static: Statischer Zugriff wie im Backend-->
+			<!--Wird auch für Enums verwendet-->
+			<DatePicker MaximumDate="{x:Static sys:DateTime.Now}"/>
+
+			<Label Text="{x:Static local:Geschlecht.M}"/>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
