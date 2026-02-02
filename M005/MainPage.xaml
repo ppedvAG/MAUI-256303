@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M005.MainPage">
+
+	<ScrollView>
+		<VerticalStackLayout Spacing="10">
+			<!--Margin & Padding: Außen-/Innenabstand-->
+			<!--Margin und Padding sind Gegenteile zueinander-->
+			<!--Left, Top, Right, Bottom-->
+			<Button Margin="5, 10, 20, 50"/>
+
+			<!--StackLayout: Stapelt Komponente-->
+			<!--Mit Orientation eine Richtung angeben-->
+			<!--Untertypen: Horizontal-/VerticalStackLayout-->
+			<StackLayout Orientation="Horizontal" Spacing="5">
+				<Button Text="Hallo"/>
+				<Button Text="Hallo"/>
+				<Button Text="Hallo"/>
+				<Button Text="Hallo" HorizontalOptions="FillAndExpand"/>
+				<!--Funktioniert nicht mit HorizontalStackLayout-->
+			</StackLayout>
+
+			<!--Grid: Zeilen-/Spaltenbasiertes Layout-->
+			<Grid RowDefinitions="100, 100, *" ColumnDefinitions="*, *, *" ColumnSpacing="10" RowSpacing="10">
+				<Button Grid.Row="0" Grid.Column="0" Text="Hallo"/>
+				<Button Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Hallo"/>
+				<Button Grid.Row="1" Grid.Column="0" Text="Hallo"/>
+				<Button Grid.Row="1" Grid.Column="1" Text="Hallo"/>
+				<Button Grid.Row="1" Grid.Column="2" Text="Hallo"/>
+				<Button Grid.Row="2" Grid.Column="0" Text="Hallo"/>
+				<Button Grid.Row="2" Grid.Column="1" Text="Hallo"/>
+				<Button Grid.Row="2" Grid.Column="2" Text="Hallo"/>
+			</Grid>
+
+			<!--AbsoluteLayout: Komponente absolut positionieren-->
+			<AbsoluteLayout Background="Aqua" WidthRequest="500" HeightRequest="300">
+				<Label Text="Hallo" Background="Red"
+					   AbsoluteLayout.LayoutBounds="100, 10, 100, 50"/>
+			</AbsoluteLayout>
+			
+			<!--FlexLayout: Passt den Inhalt auf die Bildschirmgröße an-->
+			<FlexLayout Direction="Row" Wrap="Wrap">
+				<Button Text="Hallo" WidthRequest="200"/>
+				<Button Text="Hallo" WidthRequest="200"/>
+				<Button Text="Hallo" WidthRequest="200"/>
+				<Button Text="Hallo" WidthRequest="200"/>
+			</FlexLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
