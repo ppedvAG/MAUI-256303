@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M007.MainPage"
+			 BindingContext="{Binding Source={RelativeSource Self}}">
+
+    <ScrollView>
+		<VerticalStackLayout Padding="30,0" Spacing="25">
+			<!--Binding-->
+			<!--Wie in WPF, aber syntaktisch anders-->
+			<Label Text="{Binding Source={x:Reference Slider}, Path=Value, StringFormat='Preis: {0:F2}€'}"/>
+			<Slider Minimum="0" Maximum="100" x:Name="Slider"/>
+
+			<!--DataTemplates-->
+			<ListView ItemsSource="{Binding Zahlen}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<!--Selbstbindung-->
+							<Label Text="{Binding .}" FontSize="{Binding}"/>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

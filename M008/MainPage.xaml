@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:sys="clr-namespace:System;assembly=netstandard"
+			 xmlns:local="clr-namespace:M008"
+             x:Class="M008.MainPage"
+			 BindingContext="{Binding Source={RelativeSource Self}}">
+	<ScrollView>
+		<VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+			<!--MarkupExtensions-->
+			<!--Alles was zwischen { } steht-->
+			<!--z.B.: Binding, StaticResource, x:Static, x:Reference, ...-->
+
+			<!--Beispiel: Enum an einen Picker anbinden-->
+			<Picker ItemsSource="{local:Enum EnumType={x:Type sys:DayOfWeek}}"/>
+			<Picker ItemsSource="{local:Enum EnumType={x:Type local:Geschlecht}}"/>
+
+			<!--Beispiel: Farben an einen Picker anbinden-->
+			<!--Beispiel: Converter per MarkupExtension bereitstellen (keine Resource notwendig)-->
+			<ListView ItemsSource="{local:Colors}" SelectedItem="{Binding SelectedColor, Mode=OneWayToSource, 
+						 Converter={local:Converter ConverterType={x:Type local:NamedColorToColorConverter}}}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<!--Hier werden NamedColor Objekte verwendet-->
+							<StackLayout Orientation="Horizontal">
+								<Rectangle Stroke="Black" StrokeThickness="2" Fill="{Binding Color}" WidthRequest="20" HeightRequest="20"/>
+								<Label Text="{Binding Name}"/>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<Button Clicked="Button_Clicked"/>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
